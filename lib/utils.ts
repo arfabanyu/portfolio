@@ -1,4 +1,4 @@
-import { type ClassValue, clsx } from 'clsx';
+import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function accentText() {
-  return cn('font-serif italic text-primary');
+  return cn('text-primary italic font-serif');
 }
