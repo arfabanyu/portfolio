@@ -47,7 +47,8 @@ const Hero = () => {
           )}
         >
           <h1 className={'text-7xl'}>
-            ARFA <span className={accentText()}>BANYU</span> <br /> SANTORO
+            ARFA <span className={accentText()}>BANYU</span> <br />{' '}
+            <span className='text-6xl'>SANTORO</span>
           </h1>
           <div>
             <h2 className='text-5xl'>
@@ -105,7 +106,7 @@ const Hero = () => {
                   key={'github-profile-data-' + i}
                   className={cn(item.padding, 'flex items-center gap-3')}
                 >
-                  <span className={cn(accentText(), 'text-3xl')}>
+                  <span className={cn(accentText('mono'), 'text-3xl')}>
                     {item.total}
                   </span>
                   <span>{item.dataText}</span>
