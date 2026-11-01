@@ -5,7 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function accentText(type: string = 'italic') {
-  if (type === 'mono') return cn('text-primary font-mono');
-  return cn('text-primary font-serif');
+export function displayText() {
+  return cn('text-primary font-display');
+}
+
+export function accentText() {
+  return cn('text-primary font-accent');
 }

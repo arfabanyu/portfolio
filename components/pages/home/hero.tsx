@@ -46,15 +46,15 @@ const Hero = () => {
             'mx-auto px-6',
           )}
         >
-          <h1 className={'text-5xl font-mono font-bold leading-6'}>
-            <span className={cn(accentText(), 'font-normal', 'pl-1')}>ARFA</span> <br />{' '}
-            <span className='text-8xl '>BANYU</span>
+          <h1 className={'text-5xl leading-6'}>
+            <span className={cn(accentText(), 'pl-1')}>arfa</span> <br />{' '}
+            <span className='text-8xl font-display'>Banyu</span>
           </h1>
           <div>
             <h2 className='text-2xl leading-6'>
-              <span className={cn(accentText(), '')}>Full-Stack</span>
+              <span className={cn(accentText(), '')}>full-stack</span>
               <br />
-              <span className='font-mono uppercase font-bold text-5xl'>Web Developer</span>
+              <span className='font-display font-bold text-5xl'>Web Developer</span>
             </h2>
             <div className='flex gap-2 mt-2'>
               <Button>View Projects</Button>
@@ -79,7 +79,7 @@ const Hero = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <Button variant={'link'} className={'text-foreground font-mono px-0'}>
+                  <Button variant={'link'} className={'text-foreground font-body px-0'}>
                     <item.icon />
                     {item.text}
                   </Button>

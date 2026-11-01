@@ -1,24 +1,22 @@
 import type { Metadata } from 'next';
-import {
-  Jost,
-  Old_Standard_TT,
-  JetBrains_Mono,
-} from 'next/font/google';
+import { Inter, Instrument_Serif, Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-const jostSans = Jost({
-  variable: '--font-jost-sans',
+const fontBody = Inter({
+  variable: '--font-inter',
+  weight: '300',
   subsets: ['latin'],
 });
 
-const oldStandardTtSerif = Old_Standard_TT({
-  variable: '--font-old-standard-tt-serif',
+const fontAccent = Instrument_Serif({
+  variable: '--font-instrument-serif',
   weight: '400',
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: '--font-jetbrains-mono',
+const fontDisplay = Bricolage_Grotesque({
+  variable: '--font-bricolage-grotesque',
+  weight: '800',
   subsets: ['latin'],
 });
 
@@ -35,9 +33,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={cn(
         'h-full',
         'antialiased',
-        jostSans.variable,
-        oldStandardTtSerif.variable,
-        jetBrainsMono.variable,
+        fontBody.variable,
+        fontAccent.variable,
+        fontDisplay.variable,
         // 'font-sans',
         'dark',
       )}
