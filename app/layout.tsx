@@ -1,22 +1,19 @@
 import type { Metadata } from 'next';
 import {
-  Geist,
-  Instrument_Serif,
+  Jost,
+  Old_Standard_TT,
   JetBrains_Mono,
-  Inter,
 } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const jostSans = Jost({
+  variable: '--font-jost-sans',
   subsets: ['latin'],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-instrument-serif',
+const oldStandardTtSerif = Old_Standard_TT({
+  variable: '--font-old-standard-tt-serif',
   weight: '400',
 });
 
@@ -38,11 +35,10 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       className={cn(
         'h-full',
         'antialiased',
-        geistSans.variable,
-        instrumentSerif.variable,
+        jostSans.variable,
+        oldStandardTtSerif.variable,
         jetBrainsMono.variable,
-        'font-sans',
-        inter.variable,
+        // 'font-sans',
         'dark',
       )}
     >
