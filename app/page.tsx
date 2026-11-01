@@ -23,7 +23,7 @@ function Transition() {
             className='inline-block font-black w-full whitespace-nowrap font-mono text-6xl'
             key={i}
           >
-            ARFA BANYU SANTORO{' '}
+            ARFA BANYU{' '}
           </span>
         );
       })}

@@ -46,14 +46,15 @@ const Hero = () => {
             'mx-auto px-6',
           )}
         >
-          <h1 className={'text-7xl'}>
-            ARFA <span className={accentText()}>BANYU</span> <br />{' '}
-            <span className='text-6xl'>SANTORO</span>
+          <h1 className={'text-5xl font-mono font-bold leading-6'}>
+            <span className={cn(accentText(), 'font-normal', 'pl-1')}>ARFA</span> <br />{' '}
+            <span className='text-8xl '>BANYU</span>
           </h1>
           <div>
-            <h2 className='text-5xl'>
-              Full Stack <br />
-              <span className={accentText()}>Web Developer</span>
+            <h2 className='text-2xl leading-6'>
+              <span className={cn(accentText(), '')}>Full-Stack</span>
+              <br />
+              <span className='font-mono uppercase font-bold text-5xl'>Web Developer</span>
             </h2>
             <div className='flex gap-2 mt-2'>
               <Button>View Projects</Button>
@@ -78,7 +79,7 @@ const Hero = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  <Button variant={'link'} className={'text-foreground px-0'}>
+                  <Button variant={'link'} className={'text-foreground font-mono px-0'}>
                     <item.icon />
                     {item.text}
                   </Button>
@@ -106,7 +107,7 @@ const Hero = () => {
                   key={'github-profile-data-' + i}
                   className={cn(item.padding, 'flex items-center gap-3')}
                 >
-                  <span className={cn(accentText('mono'), 'text-3xl')}>
+                  <span className={cn(accentText(), 'text-3xl')}>
                     {item.total}
                   </span>
                   <span>{item.dataText}</span>

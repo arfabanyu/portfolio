@@ -6,6 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function accentText(type: string = 'italic') {
-  if (type === 'mono') return cn('text-primary italic font-mono');
-  return cn('text-primary italic font-serif');
+  if (type === 'mono') return cn('text-primary font-mono');
+  return cn('text-primary font-serif');
 }

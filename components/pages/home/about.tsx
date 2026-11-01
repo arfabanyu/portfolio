@@ -62,8 +62,8 @@ const About = () => {
           </div>
         </div>
         <div className='w-full m-auto'>
-          <h2 className='text-xl font-mono'>
-            ABOUT <span className={accentText()}>ME</span>
+          <h2 className='text-3xl font-mono'>
+            ABOUT <span className={cn(accentText())}>ME</span>
           </h2>
           <p className='max-w-100'>
             Born in 2008 in Jakarta, Indonesia. I am a Software Engineering
