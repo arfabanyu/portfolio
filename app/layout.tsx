@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter, Instrument_Serif, Bricolage_Grotesque } from 'next/font/google';
+import { Onest, Instrument_Serif, Bricolage_Grotesque } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 
-const fontBody = Inter({
+const fontBody = Onest({
   variable: '--font-inter',
   weight: '300',
   subsets: ['latin'],

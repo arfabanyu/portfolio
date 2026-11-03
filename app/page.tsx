@@ -5,8 +5,10 @@ import Navbar from '@/components/pages/navbar';
 export default function Home() {
   return (
     <div>
-      <Navbar />
-      <Hero />
+      <div className='bg-linear-to-b from-sky-500 to-sky-300 text-sky-950'>
+        <Navbar />
+        <Hero />
+      </div>
       <Transition />
       <About />
       {/* <Hero /> */}

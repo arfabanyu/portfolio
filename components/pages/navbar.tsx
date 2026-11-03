@@ -28,7 +28,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className={cn('w-full', 'p-8')}>
+    <div className={cn('w-full sticky', 'p-8')}>
       <div className={cn('flex gap-3', 'max-w-7xl w-fit', 'mx-auto')}>
         {links.map((link, i) => {
           return (
