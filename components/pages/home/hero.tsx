@@ -131,7 +131,7 @@ const Hero = () => {
       <div
         className={cn('grid gap-6', 'max-w-7xl w-full', 'mx-auto px-8 pb-24')}
       >
-        <div>
+        <div className='pl-2'>
           <p className='font-display text-3xl'>
             Hi, <br />I am Banyu
           </p>

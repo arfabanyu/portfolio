@@ -41,7 +41,7 @@ const About = () => {
 
   const classNameImg: ClassNameValue = 'max-w-64 grayscale';
   return (
-    <div className='' id='about'>
+    <div className='bg-sky-950' id='about'>
       <div className='flex px-6 gap-6'>
         <div className={cn('relative w-full pb-40')}>
           <div className={cn(classNameImg)}>
