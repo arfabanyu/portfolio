@@ -1,4 +1,5 @@
 import About from '@/components/pages/home/about';
+import AwardsAndAchievements from '@/components/pages/home/awards-and-achievements';
 import Hero from '@/components/pages/home/hero';
 import Projects from '@/components/pages/home/projects';
 import Navbar from '@/components/pages/navbar';
@@ -11,7 +12,8 @@ export default function Home() {
         <Hero />
       </div>
       {/* <Transition /> */}
-      <Projects/>
+      <Projects />
+      <AwardsAndAchievements />
       {/* <About /> */}
       {/* <Hero /> */}
     </div>
