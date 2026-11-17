@@ -25,7 +25,7 @@ const awards: Award[] = [
 const AwardsAndAchievements = () => {
   return (
     <div className='bg-sky-950' id='about'>
-      <div className='flex py-16 px-8 gap-6 max-w-7xl mx-auto'>
+      <div className='grid grid-cols-2 py-16 px-8 gap-6 max-w-7xl mx-auto'>
         <div className='w-full'>
           <h2 className='font-bold font-display text-2xl'>Awards</h2>
           <ul className={cn('relative w-full pb-40')}>
@@ -43,7 +43,23 @@ const AwardsAndAchievements = () => {
             })}
           </ul>
         </div>
-        <ul className='w-full m-auto'></ul>
+        <div className='w-full'>
+          <h2 className='font-bold font-display text-2xl'>Achievements</h2>
+          <ul className={cn('relative w-full pb-40')}>
+            {awards.map((award) => {
+              return (
+                <li key={award.id}>
+                  <p className='font-semibold'>
+                    {award.title} - {award.event}
+                  </p>
+                  <p className='text-muted-foreground text-sm'>
+                    {award.category} | {award.month} {award.year}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

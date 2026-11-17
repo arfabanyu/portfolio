@@ -58,7 +58,7 @@ const Projects = () => {
           Explore my project <br />
           <ChevronDown className='mx-auto' />
         </p>
-        <h2 className='text-9xl font-display mx-auto'>Selected Projects.</h2>
+        <h2 className='text-9xl font-display text-center'>Selected Projects.</h2>
       </div>
       <div>
         {' '}
