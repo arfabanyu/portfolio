@@ -39,9 +39,11 @@ const About = () => {
     { src: '/about/banyu-3.jpeg', alt: 'Banyu-3' },
   ];
 
+  const bornIn = new Date(2008, 12, 4);
+  const now = new Date();
   const classNameImg: ClassNameValue = 'max-w-64 grayscale';
   return (
-    <div className='bg-sky-950' id='about'>
+    <div className='bg-slate-950' id='about'>
       <div className='flex px-6 gap-6'>
         <div className={cn('relative w-full pb-40')}>
           <div className={cn(classNameImg)}>
@@ -61,16 +63,20 @@ const About = () => {
             />
           </div>
         </div>
-        <div className='w-full m-auto'>
-          <h2 className='text-3xl font-mono'>
-            ABOUT <span className={cn(accentText())}>ME</span>
-          </h2>
-          <p className='max-w-100'>
-            Born in 2008 in Jakarta, Indonesia. I am a Software Engineering
-            student focused on web application development. I am interested in
-            software engineering, system design, and building useful digital
-            solutions.
-          </p>
+        <div className='w-full m-auto space-y-2'>
+          <h2 className='text-4xl font-display'>about me</h2>
+          <div className='space-y-2'>
+            <p className='max-w-100'>
+              Hi! I am Arfa Banyu Santoro. Just call me Banyu for short. I am a{' '}
+              {now.getFullYear() - bornIn.getFullYear()} years old teenager that
+              born in 2008 in Jakarta, Indonesia.
+            </p>
+            <p>
+              I am a Software Engineering student focused on web application
+              development. I am interested in software engineering, system
+              design, and building useful digital solutions.
+            </p>
+          </div>
         </div>
         <div className='w-full'>
           <div className={cn(classNameImg, 'mx-auto')}>

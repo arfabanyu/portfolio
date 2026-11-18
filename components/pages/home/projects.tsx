@@ -53,12 +53,14 @@ const Projects = () => {
   console.log(repos);
   return (
     <div className='50' id='about'>
-      <div className='grid items-center w-full bg-sky-950 px-6 pt-2 pb-8 gap-24'>
+      <div className='grid items-center w-full bg-slate-950 px-6 pt-2 pb-8 gap-24'>
         <p className='uppercase font-body mx-auto text-sm font-bold'>
           Explore my project <br />
           <ChevronDown className='mx-auto' />
         </p>
-        <h2 className='text-9xl font-display text-center'>Selected Projects.</h2>
+        <h2 className='text-[9rem] leading-none font-display text-center'>
+          selected works
+        </h2>
       </div>
       <div>
         {' '}

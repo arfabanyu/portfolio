@@ -25,47 +25,12 @@ const awards: Award[] = [
 
 const Footer = () => {
   return (
-    <div className='bg-sky-950' id='about'>
-      <div className='grid py-16 px-8 gap-6 max-w-7xl mx-auto'>
-        <h2 className='font-bold font-display text-9xl text-center'>
-          Journey.
-        </h2>
-        pending
-        <div className='flex gap-8'>
-          <div className='w-full justify-end'>
-            <ul className={cn('relative  pb-40')}>
-              {awards.map((award) => {
-                return (
-                  <li key={award.id}>
-                    <p className='font-semibold'>
-                      {award.title} - {award.event}
-                    </p>
-                    <p className='text-muted-foreground text-sm'>
-                      {award.category} | {award.month} {award.year}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <Separator orientation='vertical' />
-          <div className='w-full'>
-            <ul className={cn('relative w-full pb-40')}>
-              {awards.map((award) => {
-                return (
-                  <li key={award.id}>
-                    <p className='font-semibold'>
-                      {award.title} - {award.event}
-                    </p>
-                    <p className='text-muted-foreground text-sm'>
-                      {award.category} | {award.month} {award.year}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+    <div className='bg-slate-950' id='about'>
+      <div className='grid py-16 gap-6 max-w-7xl '>tes</div>
+      <div className='bg-linear-to-b from-slate-950 via-30% via-sky-500 to-sky-300  w-full rounded-t-2xl pt-36'>
+        <h3 className='font-display text-[26.3em] leading-128 text-sky-950 text-center mx-auto'>
+          Banyu
+        </h3>
       </div>
     </div>
   );

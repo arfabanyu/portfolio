@@ -24,10 +24,10 @@ const awards: Award[] = [
 
 const AwardsAndAchievements = () => {
   return (
-    <div className='bg-sky-950' id='about'>
+    <div className='bg-slate-950' id='about'>
       <div className='grid grid-cols-2 py-16 px-8 gap-6 max-w-7xl mx-auto'>
         <div className='w-full'>
-          <h2 className='font-bold font-display text-2xl'>Awards</h2>
+          <h2 className='font-bold font-display text-4xl'>Awards</h2>
           <ul className={cn('relative w-full pb-40')}>
             {awards.map((award) => {
               return (
@@ -44,7 +44,7 @@ const AwardsAndAchievements = () => {
           </ul>
         </div>
         <div className='w-full'>
-          <h2 className='font-bold font-display text-2xl'>Achievements</h2>
+          <h2 className='font-bold font-display text-4xl'>Achievements</h2>
           <ul className={cn('relative w-full pb-40')}>
             {awards.map((award) => {
               return (
