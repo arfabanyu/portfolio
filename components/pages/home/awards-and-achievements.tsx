@@ -36,39 +36,22 @@ const AwardsAndAchievements = () => {
     <div className='bg-slate-950 text-sky-100' id='about'>
       <div className='grid py-16 px-8 max-w-7xl mx-auto'>
         <div className='w-full'>
-          <h2 className='font-bold font-display text-4xl text-right'>Awards</h2>
+          <h2 className='font-bold font-display text-6xl'>Achievements</h2>
           <div className='grid grid-cols-2'>
-            <ul className={cn('grid gap-4 relative w-full pb-40 *:border-b')}>
+            <div />
+            <ul
+              className={cn(
+                'grid relative w-full pb-40 *:border-b *:border-sky-900',
+              )}
+            >
               <li />
               {awards.map((award) => {
                 return (
-                  <li key={award.id} className='pb-4 space-y-1'>
+                  <li key={award.id} className='p-4 px-4 space-y-1 bg-slate-900'>
                     <p className='text-2xl'>
                       {award.title} - {award.event}
                     </p>
-                    <p className='text-muted-foreground'>
-                      {award.category} | {award.month} {award.year}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-            <div />
-          </div>
-        </div>
-        <div className='w-full '>
-          <h2 className='font-bold font-display text-4xl'>Achievements</h2>
-          <div className='grid grid-cols-2'>
-            <div />
-            <ul className={cn('grid gap-4 relative w-full pb-4 *:border-b')}>
-              <li />
-              {awards.map((award) => {
-                return (
-                  <li key={award.id} className='pb-4 space-y-1'>
-                    <p className='text-2xl'>
-                      {award.title} - {award.event}
-                    </p>
-                    <p className='text-muted-foreground'>
+                    <p className='text-sm text-sky-400'>
                       {award.category} | {award.month} {award.year}
                     </p>
                   </li>

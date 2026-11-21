@@ -11,7 +11,16 @@ type Award = {
   description: string;
 };
 
-const awards: Award[] = [
+const experiences: Award[] = [
+  {
+    id: 'game-jam-2026',
+    title: '3rd Place',
+    event: 'Haven Club Game Jam',
+    month: 'November',
+    year: 2026,
+    category: 'Competition',
+    description: '...',
+  },
   {
     id: 'game-jam-2026',
     title: '3rd Place',
@@ -25,50 +34,55 @@ const awards: Award[] = [
 
 const Experience = () => {
   return (
-    <div className='bg-slate-950 text-sky-100' id='about'>
-      <div className='grid py-16 px-8 gap-6 max-w-7xl mx-auto'>
-        <h2 className='font-bold font-display text-[9rem] text-center leading-none'>
+    <div className='bg-slate-950 text-sky-100' id='experience'>
+      <div className='mx-auto max-w-7xl px-8 py-16'>
+        <h2 className='text-center text-6xl font-bold font-display md:text-[9rem]'>
           Journey
         </h2>
-        pending
-        <div className='flex gap-8'>
-          <div className='w-full justify-end'>
-            <ul className={cn('relative  pb-40')}>
-              {awards.map((award) => {
-                return (
-                  <li key={award.id}>
-                    <p className='font-semibold'>
-                      {award.title} - {award.event}
-                    </p>
-                    <p className='text-muted-foreground text-sm'>
-                      {award.category} | {award.month} {award.year}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <Separator orientation='vertical' />
-          <div className='w-full'>
-            <ul className={cn('relative w-full pb-40')}>
-              {awards.map((award) => {
-                return (
-                  <li key={award.id}>
-                    <p className='font-semibold'>
-                      {award.title} - {award.event}
-                    </p>
-                    <p className='text-muted-foreground text-sm'>
-                      {award.category} | {award.month} {award.year}
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+
+        <ol className='relative pt-16'>
+          {/* Garis tengah */}
+          <div className='absolute left-4 top-0 h-full w-px bg-sky-800 md:left-1/2' />
+
+          {experiences.map((exp, i) => (
+            <li
+              key={exp.id}
+              className='relative grid grid-cols-[2rem_1fr] pb-12 md:grid-cols-[1fr_4rem_1fr]'
+            >
+              <span
+                className={cn(
+                  'absolute left-4 z-10 mt-7 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-sky-400',
+                  'md:left-1/2',
+                )}
+              />
+              <div
+                className={cn(
+                  'col-start-2 border-y border-sky-900 bg-slate-900 p-5',
+                  i % 2 === 0
+                    ? 'md:col-start-1 md:text-right'
+                    : 'md:col-start-3',
+                )}
+              >
+                <p className='text-2xl'>
+                  {exp.title} — {exp.event}
+                </p>
+
+                <p className='text-sm text-sky-400'>
+                  {exp.category} | {exp.month} {exp.year}
+                </p>
+
+                {exp.description && exp.description !== '...' && (
+                  <p className='mt-3 text-sm text-sky-100/70'>
+                    {exp.description}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p className='md:text-center pt-2 text-muted-foreground'>coming soon</p>
       </div>
     </div>
   );
 };
-
 export default Experience;
