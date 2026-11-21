@@ -12,7 +12,7 @@ const About = () => {
   const bornIn = new Date(2008, 12, 4);
   const now = new Date();
   return (
-    <div className='bg-slate-950' id='about'>
+    <div className='bg-slate-950 text-sky-100' id='about'>
       <div className='flex-col lg:flex-row flex px-8 gap-8 max-w-7xl mx-auto'>
         <div className='flex-1 grid grid-cols-2 gap-0.5 rounded overflow-hidden'>
           <div className='relative'>
@@ -91,7 +91,7 @@ const About = () => {
         <div className='w-full space-y-2 max-w-lg'>
           <div className='space-y-2 text-justify  tracking-wide'>
             <p>
-              Hey! I&apos;m Banyu, a {now.getFullYear() - bornIn.getFullYear()}
+              Hi! I&apos;m Banyu, a {now.getFullYear() - bornIn.getFullYear()}
               -year-old student from Jakarta, Indonesia, currently studying
               Software Engineering at SMK Negeri 1 Jakarta. I&apos;m interested
               in many areas of technology, from software development and system
@@ -102,8 +102,8 @@ const About = () => {
               concepts or topics that I initially knew very little about.
             </p>
             <p>
-              Outside of programming, I enjoy drawing, watching anime, reading
-              manwha, playing games, and others. I also find myself interested
+              Outside of programming, I enjoy drawing, watching animes, reading
+              manwhas, playing games, and others. I also find myself interested
               in topics beyond technology, from psychology and human behavior to
               philosophy and the way people think. I guess I just enjoy seeing
               things from different perspectives and discovering connections

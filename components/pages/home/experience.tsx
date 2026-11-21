@@ -25,7 +25,7 @@ const awards: Award[] = [
 
 const Experience = () => {
   return (
-    <div className='bg-slate-950' id='about'>
+    <div className='bg-slate-950 text-sky-100' id='about'>
       <div className='grid py-16 px-8 gap-6 max-w-7xl mx-auto'>
         <h2 className='font-bold font-display text-[9rem] text-center leading-none'>
           Journey

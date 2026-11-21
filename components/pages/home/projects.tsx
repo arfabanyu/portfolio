@@ -51,7 +51,7 @@ const selectedRepos: Record<number, ModifiedRepo> = {
 
 const Projects = () => {
   return (
-    <div className='50' id='about'>
+    <div className='50 text-sky-100' id='about'>
       <div className='grid items-center w-full bg-slate-950 px-6 pt-2 pb-8 gap-24'>
         <p className='uppercase font-body mx-auto text-sm font-bold'>
           Explore my project <br />
@@ -61,7 +61,7 @@ const Projects = () => {
           selected works
         </h2>
       </div>
-      <div className='grid gap-8'>
+      <div className='grid gap-8 bg-slate-950'>
         <Repos />
       </div>
     </div>
