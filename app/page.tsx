@@ -9,7 +9,7 @@ import Navbar from '@/components/pages/navbar';
 export default function Home() {
   return (
     <div>
-      <div className='bg-linear-to-b from-sky-500 to-sky-300 text-sky-950'>
+      <div className='bg-gradient-primary'>
         <Navbar />
         <Hero />
       </div>

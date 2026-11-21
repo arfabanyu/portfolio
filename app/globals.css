@@ -176,6 +176,10 @@
   :root {
   }
 
+  .bg-gradient-primary {
+    @apply bg-linear-to-b from-sky-500 to-sky-300 text-sky-950;
+  }
+
   code,
   pre {
     font-family: var(--font-mono);

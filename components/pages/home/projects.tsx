@@ -1,9 +1,9 @@
 'use client';
 import { ChevronDown } from 'lucide-react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 type Repo = {
+  id: number;
   name: string;
   description: string;
   html_url: string;
@@ -12,45 +12,44 @@ type Repo = {
   language: string[];
   stargazers_count: number;
   updated_at: string;
+} & ModifiedRepo;
+
+type ModifiedRepo = {
+  displayName: string;
+  category: string;
+  videoSrc: string;
+  isOnGoing: boolean;
+  date: {
+    // MM-DD-YYYY
+    started: string;
+    ended: string;
+  };
 };
 
-const selectedRepos = ['portfolio', 'arfa-banyu-santoro'];
+const selectedRepos: Record<number, ModifiedRepo> = {
+  1015474777: {
+    displayName: 'Studemon',
+    category: 'Web app',
+    videoSrc: '',
+    isOnGoing: true,
+    date: {
+      started: '07-07-2025',
+      ended: '',
+    },
+  },
+  1457621743: {
+    displayName: 'Re:lele',
+    category: 'Game web',
+    videoSrc: '',
+    isOnGoing: false,
+    date: {
+      started: '11-14-2026',
+      ended: '11-15-2026',
+    },
+  },
+};
 
 const Projects = () => {
-  const [repos, setRepos] = useState<Repo[]>([]);
-
-  useEffect(() => {
-    async function getRepos() {
-      const headers = {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_PERSONAL_ACCESS_TOKEN}`,
-        Accept: 'application/vnd.github+json',
-      };
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_GITBUB_API_BASE_URL}`,
-          { headers },
-        );
-        setRepos(await res.json());
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    getRepos();
-  }, []);
-
-  const selectedProjects: Repo[] = repos.filter((repo) =>
-    selectedRepos.includes(repo.name),
-  );
-  // .map((repo) => ({
-  //   name: repo.name,
-  //   description: repo.description,
-  //   language: repo.language,
-  //   url: repo.html_url,
-  //   stars: repo.stargazers_count,
-  //   updatedAt: repo.updated_at,
-  // }));
-  console.log(repos);
   return (
     <div className='50' id='about'>
       <div className='grid items-center w-full bg-slate-950 px-6 pt-2 pb-8 gap-24'>
@@ -62,31 +61,136 @@ const Projects = () => {
           selected works
         </h2>
       </div>
-      <div>
-        {' '}
-        {selectedProjects.map((repo, i: number) => {
-          return (
-            <div key={i} className='border-t p-6 relative'>
-              <h3 className='text-4xl break-words font-mono md:text-4xl leading-13 md:leading-20 uppercase'>
-                {repo.name.replaceAll('-', ' ')}
-              </h3>
-              <p className='text-sm text-gray-400 max-w-2xl'>
-                {repo.description}
-              </p>
-              <div className='flex pt-4 gap-2 *:p-2 *:first:bg-white *:first:hover:bg-gray-400 *:first:text-black *:last:ring *:last:ring-white *:last:hover:border-none *:last:hover:bg-gray *:last:hover:text-black *:transition-all'>
-                <Link href={repo.html_url}>See Repo</Link>
-                {repo.has_pages ? (
-                  <Link href={repo.homepage}>See Page</Link>
-                ) : (
-                  <div className='opacity-0'></div>
-                )}
-              </div>
-            </div>
-          );
-        })}
+      <div className='grid gap-8'>
+        <Repos />
       </div>
     </div>
   );
+};
+
+const Repos = () => {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  console.log(repos);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    async function getRepos() {
+      const headers = {
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_PERSONAL_ACCESS_TOKEN}`,
+        Accept: 'application/vnd.github+json',
+      };
+      try {
+        setLoading(true);
+
+        // 1. Fetch halaman pertama
+        const firstRes = await fetch(
+          `${process.env.NEXT_PUBLIC_GITBUB_API_BASE_URL}/user/repos?per_page=100&sort=pushed&affiliation=owner,collaborator&page=1`,
+          {
+            headers,
+            signal: controller.signal,
+          },
+        );
+        if (!firstRes.ok) throw new Error(`Error ${firstRes.status}`);
+
+        const firstPageData = await firstRes.json();
+
+        // 2. Cek total halaman dari header Link
+        const linkHeader = firstRes.headers.get('link');
+        const lastPageMatch =
+          linkHeader && linkHeader.match(/page=(\d+)>; rel="last"/);
+
+        if (!lastPageMatch) {
+          setRepos(firstPageData);
+          return;
+        }
+
+        const lastPage = parseInt(lastPageMatch[1], 10);
+
+        // 3. Fetch sisa halaman (page 2 s/d terakhir) secara paralel
+        const pagePromises = [];
+        for (let page = 2; page <= lastPage; page++) {
+          pagePromises.push(
+            fetch(
+              `${process.env.NEXT_PUBLIC_GITBUB_API_BASE_URL}/user/repos?per_page=100&sort=pushed&affiliation=owner,collaborator&page=${page}`,
+              {
+                headers,
+                signal: controller.signal,
+              },
+            ).then((res) => {
+              if (!res.ok) throw new Error(`Error pada page ${page}`);
+              return res.json();
+            }),
+          );
+        }
+
+        const remainingPages = await Promise.all(pagePromises);
+
+        // 4. Gabungkan semuanya jadi 1 array di state
+        setRepos([firstPageData, ...remainingPages].flat());
+      } catch (err) {
+        if (err instanceof Error) {
+          if (err.name !== 'AbortError') {
+            setError(err.message);
+          }
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getRepos();
+    return () => controller.abort();
+  }, []);
+
+  const selectedProjects: Repo[] = repos
+    .filter((repo) => repo.id in selectedRepos)
+    .map((repo) => ({ ...repo, ...selectedRepos[repo.id] }));
+
+  const formatDate = (date: Date) =>
+    Intl.DateTimeFormat('id-ID', {
+      timeZone: 'Asia/Jakarta',
+      month: 'short',
+      year: 'numeric',
+    }).format(date);
+
+  return loading
+    ? null
+    : error
+      ? 'Error'
+      : selectedProjects.map((project, i: number) => {
+          const projectStarted = formatDate(new Date(project.date.started));
+          const projectEnded = project.isOnGoing
+            ? 'Present'
+            : formatDate(new Date(project.date.ended));
+          return (
+            <div key={i} className=' px-8 relative bg-slate-950'>
+              <div className='grid grid-cols-3 gap-8 max-w-7xl px-8 mx-auto'>
+                <div className='text-right'>
+                  <h3 className='text-lg font-semibold'>
+                    {project.displayName}
+                  </h3>
+                  <p className='text-gray-400 max-w-xl'>
+                    {project.category},{' '}
+                    {projectStarted === projectEnded
+                      ? projectStarted
+                      : `${projectStarted} - ${projectEnded}`}
+                  </p>
+                </div>
+                <div>
+                  <div className='aspect-video bg-white' />
+                </div>
+                <div>
+                  <p>
+                    {project.description ??
+                      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt asperiores vel, inventore eum assumenda, optio eius, voluptatum debitis quo minus dignissimos dolore! Et nesciunt mollitia, quidem impedit quisquam assumenda ex.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          );
+        });
 };
 
 export default Projects;

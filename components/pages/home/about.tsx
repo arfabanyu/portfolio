@@ -1,36 +1,4 @@
-import { Button } from '@/components/ui/button';
-import { accentText, cn } from '@/lib/utils';
-import { Mail } from 'lucide-react';
-import {
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-} from '@tabler/icons-react';
 import Image from 'next/image';
-import { ClassNameValue } from 'tailwind-merge';
-
-const socialMedia = [
-  {
-    href: 'mailto:banyuarfa1122@gmail.com',
-    icon: Mail,
-    text: 'EMAIL',
-  },
-  {
-    href: 'https://github.com/arfabanyu',
-    icon: IconBrandGithub,
-    text: 'GITHUB',
-  },
-  {
-    href: 'https://instagram.com/arfabanyu',
-    icon: IconBrandInstagram,
-    text: 'INSTAGRAM',
-  },
-  {
-    href: 'https://linkedin.com/in/arfabanyusantoro',
-    icon: IconBrandLinkedin,
-    text: 'LINKEDIN',
-  },
-];
 
 const About = () => {
   const photos = [
@@ -45,14 +13,14 @@ const About = () => {
   const now = new Date();
   return (
     <div className='bg-slate-950' id='about'>
-      <div className='flex-col lg:flex-row flex px-6 gap-8 max-w-7xl mx-auto'>
+      <div className='flex-col lg:flex-row flex px-8 gap-8 max-w-7xl mx-auto'>
         <div className='flex-1 grid grid-cols-2 gap-0.5 rounded overflow-hidden'>
           <div className='relative'>
             <Image
               src={photos[0].src}
               alt={photos[0].alt}
               fill
-              // sizes='(max-width: 768px) 100vw, 50vw'
+              sizes='(max-width: 768px) 100vw, 50vw'
               className='object-cover grayscale'
             />
           </div>
@@ -64,7 +32,7 @@ const About = () => {
                 src={photos[1].src}
                 alt={photos[1].alt}
                 fill
-                // sizes='(max-width: 768px) 60vw, 35vw'
+                sizes='(max-width: 768px) 60vw, 35vw'
                 className='object-cover grayscale '
               />
             </div>
@@ -77,7 +45,7 @@ const About = () => {
                   src={photos[2].src}
                   alt={photos[2].alt}
                   fill
-                  // sizes='(max-width: 768px) 38vw, 20vw'
+                  sizes='(max-width: 768px) 38vw, 20vw'
                   className='object-cover grayscale'
                 />
               </div>
@@ -89,7 +57,7 @@ const About = () => {
                     src={photos[3].src}
                     alt={photos[3].alt}
                     fill
-                    // sizes='(max-width: 768px) 19vw, 10vw'
+                    sizes='(max-width: 768px) 19vw, 10vw'
                     className='object-cover grayscale object-top'
                   />
                 </div>
@@ -99,7 +67,7 @@ const About = () => {
                     src={photos[4].src}
                     alt={photos[4].alt}
                     fill
-                    // sizes='(max-width: 768px) 19vw, 10vw'
+                    sizes='(max-width: 768px) 19vw, 10vw'
                     className='object-cover grayscale'
                   />
                 </div>
