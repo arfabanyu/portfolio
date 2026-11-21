@@ -28,3 +28,10 @@ export function getRepos() {
     resolve(await res.json());
   });
 }
+
+export const formatDate = (date: Date) =>
+  Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Jakarta',
+    month: 'short',
+    year: 'numeric',
+  }).format(date);

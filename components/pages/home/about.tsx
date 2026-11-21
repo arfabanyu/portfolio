@@ -89,7 +89,7 @@ const About = () => {
         </h2>
 
         <div className='w-full space-y-2 max-w-lg'>
-          <div className='space-y-2 text-justify  tracking-wide'>
+          <div className='space-y-2 tracking-wide'>
             <p>
               Hi! I&apos;m Banyu, a {now.getFullYear() - bornIn.getFullYear()}
               -year-old student from Jakarta, Indonesia, currently studying

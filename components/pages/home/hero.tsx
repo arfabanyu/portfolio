@@ -48,13 +48,13 @@ const socialMedia = [
 //         >
 //           <h1 className={'text-5xl leading-6'}>
 //             <span className={cn(accentText(), 'pl-1')}>arfa</span> <br />{' '}
-//             <span className='text-8xl font-display'>Banyu</span>
+//             <span className='text-8xl font-body'>Banyu</span>
 //           </h1>
 //           <div>
 //             <h2 className='text-2xl leading-6'>
 //               <span className={cn(accentText(), '')}>full-stack</span>
 //               <br />
-//               <span className='font-display font-bold text-5xl'>Web Developer</span>
+//               <span className='font-body font-bold text-5xl'>Web Developer</span>
 //             </h2>
 //             <div className='flex gap-2 mt-2'>
 //               <Button>View Projects</Button>
@@ -151,7 +151,13 @@ const Hero = () => {
             Driven by curiosity, I explore software engineering,
             problem-solving, and the ideas behind the things I build.
           </p>
-          <div className={cn('grid grid-cols-2', 'max-w-7xl w-full h-fit', 'mx-auto px-6')}>
+          <div
+            className={cn(
+              'grid grid-cols-2',
+              'max-w-7xl w-full h-fit',
+              'mx-auto px-6',
+            )}
+          >
             {socialMedia.map((item, i) => {
               return (
                 <a

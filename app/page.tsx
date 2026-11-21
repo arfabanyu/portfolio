@@ -1,5 +1,5 @@
 import About from '@/components/pages/home/about';
-import AwardsAndAchievements from '@/components/pages/home/awards-and-achievements';
+import Achievements from '@/components/pages/home/achievements';
 import Experience from '@/components/pages/home/experience';
 import Footer from '@/components/pages/home/footer';
 import Hero from '@/components/pages/home/hero';
@@ -15,7 +15,7 @@ export default function Home() {
       </div>
       {/* <Transition /> */}
       <Projects />
-      <AwardsAndAchievements />
+      <Achievements />
       <About />
       <Experience />
       <Footer />

@@ -1,34 +1,41 @@
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
+import { cn, formatDate } from '@/lib/utils';
 
-type Award = {
+type Experience = {
   id: string;
-  title: string;
-  event: string;
-  month: string;
-  year: number;
-  category: string;
+  role: string;
+  organization: string;
+  organizationUrl?: string;
+
+  type: 'internship' | 'employment' | 'organization';
+  location?: string;
+
+  startDate: string;
+  endDate: string | null;
   description: string;
+
+  responsibilities: string[];
+  technologies?: string[];
+  achievements?: string[];
+
+  credentialUrl?: string;
 };
 
-const experiences: Award[] = [
+const experiences: Experience[] = [
   {
-    id: 'game-jam-2026',
-    title: '3rd Place',
-    event: 'Haven Club Game Jam',
-    month: 'November',
-    year: 2026,
-    category: 'Competition',
-    description: '...',
-  },
-  {
-    id: 'game-jam-2026',
-    title: '3rd Place',
-    event: 'Haven Club Game Jam',
-    month: 'November',
-    year: 2026,
-    category: 'Competition',
-    description: '...',
+    id: 'morfotech-internship',
+    role: 'Full-Stack Web Developer Intern',
+    organization: 'Morfotech',
+    organizationUrl: 'https://morfotech.id',
+    type: 'internship',
+    location: 'Jakarta, Indonesia',
+    startDate: '2026-12',
+    endDate: '2027-03',
+    description: '',
+    responsibilities: [],
+    technologies: [],
+    achievements: [],
+    credentialUrl: undefined,
   },
 ];
 
@@ -51,36 +58,40 @@ const Experience = () => {
             >
               <span
                 className={cn(
-                  'absolute left-4 z-10 mt-7 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-sky-400',
+                  'absolute left-4 z-10 mt-8 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-slate-950 bg-sky-400',
                   'md:left-1/2',
                 )}
               />
               <div
                 className={cn(
-                  'col-start-2 border-y border-sky-900 bg-slate-900 p-5',
+                  'flex w-full items-center col-start-2 border-y p-5 space-y-2',
                   i % 2 === 0
                     ? 'md:col-start-1 md:text-right'
                     : 'md:col-start-3',
                 )}
               >
-                <p className='text-2xl'>
-                  {exp.title} — {exp.event}
-                </p>
-
-                <p className='text-sm text-sky-400'>
-                  {exp.category} | {exp.month} {exp.year}
-                </p>
-
-                {exp.description && exp.description !== '...' && (
-                  <p className='mt-3 text-sm text-sky-100/70'>
-                    {exp.description}
+                <div className='w-fit text-nowrap'>
+                  <p className='text-sm text-muted-foreground'>
+                    {formatDate(new Date(exp.startDate))} -{' '}
+                    {exp.endDate
+                      ? formatDate(new Date(exp.endDate))
+                      : 'Present'}
                   </p>
-                )}
+                </div>
+                <div className='w-full '>
+                  <a
+                    href={exp.organizationUrl}
+                    className='text-3xl font-semibold'
+                  >
+                    {exp.organization}
+                  </a>
+                  <p className='text-sky-500 pt-1'>{exp.role}</p>
+                </div>
               </div>
             </li>
           ))}
         </ol>
-        <p className='md:text-center pt-2 text-muted-foreground'>coming soon</p>
+        <p className='md:text-center pt-2'>coming soon</p>
       </div>
     </div>
   );

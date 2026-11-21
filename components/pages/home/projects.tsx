@@ -1,4 +1,5 @@
 'use client';
+import { formatDate } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -147,13 +148,6 @@ const Repos = () => {
   const selectedProjects: Repo[] = repos
     .filter((repo) => repo.id in selectedRepos)
     .map((repo) => ({ ...repo, ...selectedRepos[repo.id] }));
-
-  const formatDate = (date: Date) =>
-    Intl.DateTimeFormat('id-ID', {
-      timeZone: 'Asia/Jakarta',
-      month: 'short',
-      year: 'numeric',
-    }).format(date);
 
   return loading
     ? null
